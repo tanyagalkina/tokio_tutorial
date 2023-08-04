@@ -1,0 +1,14 @@
+Hello, lets start!
+
+Tokio is using async / await Rust feature
+
+T provides multiple variations of the runtime!
+
+started doing my-redis tutorial
+
+operations that cannot complete immediately are suspended to the background
+
+what is green-threading ?
+
+IS runtime an executor ? or executor is somth else then rt ?
+runtime contains async task scheduler, evented I/O, timers
