@@ -8,9 +8,10 @@ async fn main() {
     loop {
         let (socket, conn) = listener.accept().await.unwrap();
         println!("Accepted connection from {:?}", conn);
-        // tokio::spawn(async move { // this makes it possible not to block the main thread
+        tokio::spawn(async move {
+            // this makes it possible not to block the main thread
             process(socket).await;
-        // });
+        });
     }
 }
 

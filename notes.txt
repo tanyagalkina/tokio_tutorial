@@ -8,7 +8,27 @@ started doing my-redis tutorial
 
 operations that cannot complete immediately are suspended to the background
 
-what is green-threading ?
+what is green-threading ? ( user level threading ) #  is a lightweight thread managed by a runtime library or a user-space thread library, instead of the operating system kernel
+
+A tokio task is an asynchronous green Thread
 
 IS runtime an executor ? or executor is somth else then rt ?
 runtime contains async task scheduler, evented I/O, timers
+
+****
+Spawning
+****
+
+A Task allocates 64 bytes of memory
+
+-- 'static bound  ::  must not contain any references to data owned outside the task
+       -- the variables are not moved by default into async blocks
+       -- have to make sure that the task is allowed to live forever
+
+       TODO: better understand this piece :
+       -------------------------
+       The article that the info-box earlier links to uses the terminology "bounded by 'static" rather than "its type outlives 'static" or "the value is 'static" to refer to T: 'static. These all mean the same thing, but are different from "annotated with 'static" as in &'static T.
+       -------------------------
+   TODO: look into Send Trait
+-- Send bound ( must implement Send )
+    -- Send allowes the Tokio runtime to move tasks netween threads while they are suspended
