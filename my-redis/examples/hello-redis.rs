@@ -19,6 +19,11 @@ async fn main() -> Result<()> {
     client.set("hello", "world!".into()).await?;
     let result = client.get("hello").await?;
 
+    // making another connection to see that the data is not persisted
+    let mut client = client::connect("127.0.0.1:6379").await?;
+    let result = client.get("hello").await?;
+
+    
     println!(
         "this is what I got back: {:?}",
         String::from_utf8(result.unwrap().to_vec()).unwrap()

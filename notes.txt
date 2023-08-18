@@ -25,10 +25,15 @@ A Task allocates 64 bytes of memory
        -- the variables are not moved by default into async blocks
        -- have to make sure that the task is allowed to live forever
 
+-- Send bound ( must implement Send )
+    -- Send allowes the Tokio runtime to move tasks netween threads while they are suspended
+
+  Spawning Chapter
+   
        TODO: better understand this piece :
        -------------------------
        The article that the info-box earlier links to uses the terminology "bounded by 'static" rather than "its type outlives 'static" or "the value is 'static" to refer to T: 'static. These all mean the same thing, but are different from "annotated with 'static" as in &'static T.
        -------------------------
-   TODO: look into Send Trait
--- Send bound ( must implement Send )
-    -- Send allowes the Tokio runtime to move tasks netween threads while they are suspended
+       https://practice.rs/lifetime/static.html
+
+       TODO: look into Send Trait

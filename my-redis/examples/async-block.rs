@@ -11,6 +11,10 @@ async fn async_function() -> i8 {
 
 #[tokio::main]
 async fn main() {
+
+    let async_block = async {
+        42
+    };
     // can interact with the spawned task using JoinHandle ( the type of handle )
     let handle = tokio::spawn(async { function() });
     assert!(handle.await.unwrap() == 42); // `Result<i8, JoinError>` is returned by `JoinHandle::await`
@@ -21,4 +25,6 @@ async fn main() {
 
     let handle_3 = tokio::spawn(async { async_function() });
     assert!(handle_3.await.unwrap().await == 42);
+    let handle_4 = tokio::spawn(async_block);
+    assert!(handle_4.await.unwrap() == 42);
 }
