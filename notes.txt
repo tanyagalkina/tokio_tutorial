@@ -26,7 +26,7 @@ A Task allocates 64 bytes of memory
        -- have to make sure that the task is allowed to live forever
 
 -- Send bound ( must implement Send )
-    -- Send allowes the Tokio runtime to move tasks netween threads while they are suspended
+    -- Send allowes the Tokio runtime to move tasks between threads while they are suspended
 
   Spawning Chapter
    
@@ -37,3 +37,10 @@ A Task allocates 64 bytes of memory
        https://practice.rs/lifetime/static.html
 
        TODO: look into Send Trait
+
+       -- The type ( T ) is Sync, if the &T is Send
+       -- both Send and Sync are marker Traits and dont have methods to implement
+       
+
+
+       

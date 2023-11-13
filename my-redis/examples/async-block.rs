@@ -23,8 +23,8 @@ async fn main() {
     let handle_2 = tokio::spawn(async { async_function().await });
     assert!(handle_2.await.unwrap() == 42);
 
-    let handle_3 = tokio::spawn(async { async_function() });
-    assert!(handle_3.await.unwrap().await == 42);
+    let handle_3 = tokio::spawn(async { async_function().await });
+    assert!(handle_3.await.unwrap() == 42);
     let handle_4 = tokio::spawn(async_block);
     assert!(handle_4.await.unwrap() == 42);
 }
